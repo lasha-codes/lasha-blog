@@ -77,7 +77,7 @@ const CreatePost = () => {
     }
     const base64 = await convertToBase64(file)
     const response = await fetch(
-      `https://deploy-mern-frontend-rust.vercel.app/update-post/${id}`,
+      `https://lasha-blog.vercel.app/update-post/${id}`,
       {
         method: 'PUT',
         body: JSON.stringify({

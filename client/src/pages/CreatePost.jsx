@@ -47,21 +47,18 @@ const CreatePost = () => {
   const handleCreatePost = async (e) => {
     e.preventDefault()
     const base64 = await convertToBase64(file)
-    const response = await fetch(
-      'https://deploy-mern-frontend-rust.vercel.app/create-post',
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          base64: base64,
-          summary: summary,
-          title: title,
-          types: inpTypes,
-          description: description,
-        }),
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-      }
-    )
+    const response = await fetch('https://lasha-blog.vercel.app/create-post', {
+      method: 'POST',
+      body: JSON.stringify({
+        base64: base64,
+        summary: summary,
+        title: title,
+        types: inpTypes,
+        description: description,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+    })
     if (response.ok) {
       toast.success('U have successfully uploaded a post')
     } else {
