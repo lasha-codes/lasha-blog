@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { urlContext } from '../components/UrlContext.jsx'
+import toast from 'react-hot-toast'
 
 const LoginPage = () => {
   const [email, setEmail] = useState('')
@@ -26,6 +27,7 @@ const LoginPage = () => {
     if (!response.ok) {
       console.log('error')
     } else {
+      toast.success(`Welcome to the Blog Page!`)
       setRedirect(true)
     }
   }

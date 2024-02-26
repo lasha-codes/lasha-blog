@@ -11,7 +11,7 @@ const RegisterPage = () => {
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [redirect, setRedirect] = useState('')
+  const [redirect, setRedirect] = useState(false)
   const { url } = useContext(urlContext)
 
   const handleRegister = async (e) => {
@@ -28,6 +28,7 @@ const RegisterPage = () => {
     if (!response.ok) {
       toast.error('This user already exists')
     } else {
+      toast.success('U have successfully registered the user')
       setRedirect(true)
     }
   }

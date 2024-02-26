@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
-import { useParams } from 'react-router'
+import { Navigate, useParams } from 'react-router'
 import { useContext } from 'react'
 import { urlContext } from '../components/UrlContext.jsx'
 
@@ -10,6 +10,7 @@ const CreatePost = () => {
   const [summary, setSummary] = useState('')
   const [file, setFile] = useState('')
   const [inpTypes, setInpTypes] = useState([])
+  const [redirect, setRedirect] = useState(false)
   const { url } = useContext(urlContext)
 
   const { id } = useParams()
@@ -100,6 +101,13 @@ const CreatePost = () => {
 
     const data = await response.json()
     console.log(data)
+    if (response.ok) {
+      setRedirect(true)
+    }
+  }
+
+  if (redirect) {
+    return <Navigate to='/' />
   }
 
   return (
