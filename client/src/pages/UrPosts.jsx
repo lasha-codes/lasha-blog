@@ -24,7 +24,7 @@ const UrPosts = () => {
   }
 
   const handlePostDelete = async (deleteId) => {
-    const response = await fetch('https://lasha-blog.vercel.app//delete-post', {
+    const response = await fetch('https://lasha-blog.vercel.app/delete-post', {
       method: 'DELETE',
       body: JSON.stringify({
         deleteId: deleteId,

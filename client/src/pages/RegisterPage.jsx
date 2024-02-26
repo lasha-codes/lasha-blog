@@ -13,18 +13,15 @@ const RegisterPage = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault()
-    const response = await fetch(
-      'https:/https://lasha-blog.vercel.app/register',
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          email,
-          username,
-          password,
-        }),
-        headers: { 'Content-Type': 'application/json' },
-      }
-    )
+    const response = await fetch('https://lasha-blog.vercel.app/register', {
+      method: 'POST',
+      body: JSON.stringify({
+        email,
+        username,
+        password,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    })
     if (!response.ok) {
       toast.error('This user already exists')
     } else {
