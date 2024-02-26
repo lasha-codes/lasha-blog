@@ -2,16 +2,19 @@ import { MdAttachEmail } from 'react-icons/md'
 import { FaKey } from 'react-icons/fa'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import { urlContext } from '../components/UrlContext.jsx'
 
 const LoginPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [redirect, setRedirect] = useState(false)
   const navigate = useNavigate()
+  const { url } = useContext(urlContext)
 
   const handleLogin = async (e) => {
     e.preventDefault()
-    const response = await fetch('http://localhost:4000/login', {
+    const response = await fetch(`${url}/login`, {
       method: 'POST',
       body: JSON.stringify({
         email,

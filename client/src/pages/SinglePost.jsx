@@ -2,16 +2,20 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { formatISO9075 } from 'date-fns'
 import noImage from '../assets/noProfile.png'
+import { useContext } from 'react'
+import { urlContext } from '../components/UrlContext.jsx'
 
 const SinglePost = () => {
   const [post, setPost] = useState([])
+  const { url } = useContext(urlContext)
   const { id } = useParams()
+
   useEffect(() => {
     fetchPosts()
   }, [])
 
   const fetchPosts = async () => {
-    const response = await fetch('http://localhost:4000/posts')
+    const response = await fetch(`${url}/posts`)
     const data = await response.json()
     if (response.ok) {
       setPost(

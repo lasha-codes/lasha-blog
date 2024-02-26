@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import toast from 'react-hot-toast'
+import { useContext } from 'react'
+import { urlContext } from '../components/UrlContext.jsx'
 
 const CreatePost = () => {
   const [title, setTitle] = useState('')
@@ -7,6 +9,8 @@ const CreatePost = () => {
   const [summary, setSummary] = useState('')
   const [file, setFile] = useState('')
   const [inpTypes, setInpTypes] = useState([])
+  const { url } = useContext(urlContext)
+
   const typesArr = [
     'UI/UX',
     'EDUCATION',
@@ -47,7 +51,7 @@ const CreatePost = () => {
   const handleCreatePost = async (e) => {
     e.preventDefault()
     const base64 = await convertToBase64(file)
-    const response = await fetch('http://localhost:4000/create-post', {
+    const response = await fetch(`${url}/create-post`, {
       method: 'POST',
       body: JSON.stringify({
         base64: base64,

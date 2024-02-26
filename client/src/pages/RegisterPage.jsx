@@ -4,16 +4,19 @@ import { FaKey } from 'react-icons/fa'
 import { useState } from 'react'
 import { Navigate } from 'react-router'
 import toast from 'react-hot-toast'
+import { useContext } from 'react'
+import { urlContext } from '../components/UrlContext.jsx'
 
 const RegisterPage = () => {
   const [email, setEmail] = useState('')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [redirect, setRedirect] = useState('')
+  const { url } = useContext(urlContext)
 
   const handleRegister = async (e) => {
     e.preventDefault()
-    const response = await fetch('http://localhost:4000/register', {
+    const response = await fetch(`${url}/register`, {
       method: 'POST',
       body: JSON.stringify({
         email,

@@ -6,29 +6,22 @@ import { FaEye } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { IoSearch } from 'react-icons/io5'
 import Loading from '../components/Loading'
+import { useContext } from 'react'
+import { urlContext } from '../components/UrlContext.jsx'
 
 const Home = () => {
   const [posts, setPosts] = useState()
   const [search, setSearch] = useState('')
   const [searchToggle, setSearchToggle] = useState(false)
   const [originalPosts, setOriginalPosts] = useState([])
-
-  const filterTypes = [
-    'UI/UX',
-    'EDUCATION',
-    'INFORMATIONAL',
-    'POLITICS',
-    'GLOBAL',
-    'NATURE',
-    'SPORTS',
-  ]
+  const { url } = useContext(urlContext)
 
   useEffect(() => {
     fetchPosts()
   }, [])
 
   const fetchPosts = async () => {
-    const response = await fetch('http://localhost:4000/posts')
+    const response = await fetch(`${url}/posts`)
     const data = await response.json()
     if (response.ok) {
       setPosts(data.posts)

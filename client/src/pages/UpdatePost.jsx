@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { useParams } from 'react-router'
+import { useContext } from 'react'
+import { urlContext } from '../components/UrlContext.jsx'
 
 const CreatePost = () => {
   const [title, setTitle] = useState('')
@@ -8,6 +10,7 @@ const CreatePost = () => {
   const [summary, setSummary] = useState('')
   const [file, setFile] = useState('')
   const [inpTypes, setInpTypes] = useState([])
+  const { url } = useContext(urlContext)
 
   const { id } = useParams()
 
@@ -22,7 +25,7 @@ const CreatePost = () => {
   ]
 
   const fetchPostInfo = async () => {
-    const response = await fetch(`http://localhost:4000/update-post/${id}`, {
+    const response = await fetch(`${url}/update-post/${id}`, {
       method: 'POST',
       body: JSON.stringify({
         updateId: id,
@@ -73,7 +76,7 @@ const CreatePost = () => {
       toast.error('Image field is required')
     }
     const base64 = await convertToBase64(file)
-    const response = await fetch(`http://localhost:4000/update-post/${id}`, {
+    const response = await fetch(`${url}/update-post/${id}`, {
       method: 'PUT',
       body: JSON.stringify({
         base64: base64,

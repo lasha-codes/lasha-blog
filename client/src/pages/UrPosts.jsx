@@ -6,13 +6,16 @@ import { useNavigate } from 'react-router'
 import { FaRegEdit } from 'react-icons/fa'
 import { MdDelete } from 'react-icons/md'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { urlContext } from '../components/UrlContext.jsx'
 
 const UrPosts = () => {
   const [posts, setPosts] = useState([])
   const navigate = useNavigate(false)
+  const { url } = useContext(urlContext)
 
   const fetchPosts = async () => {
-    const response = await fetch('http://localhost:4000/user-posts', {
+    const response = await fetch(`${url}/user-posts`, {
       credentials: 'include',
     })
     const data = await response.json()
@@ -24,7 +27,7 @@ const UrPosts = () => {
   }
 
   const handlePostDelete = async (deleteId) => {
-    const response = await fetch('http://localhost:4000/delete-post', {
+    const response = await fetch(`${url}/delete-post`, {
       method: 'DELETE',
       body: JSON.stringify({
         deleteId: deleteId,

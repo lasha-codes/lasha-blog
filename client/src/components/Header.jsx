@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import noImage from '../assets/noProfile.png'
 import toast from 'react-hot-toast'
+import { useContext } from 'react'
+import { urlContext } from './UrlContext'
 
 const Header = () => {
   const [user, setUser] = useState(null)
@@ -12,6 +14,7 @@ const Header = () => {
   const [image, setImage] = useState('')
   const [menuToggle, setMenuToggle] = useState(false)
   const location = useLocation().pathname.toString()
+  const { url } = useContext(urlContext)
 
   const navigate = useNavigate()
 
@@ -34,7 +37,7 @@ const Header = () => {
   }, [])
 
   const fetchUserProfile = () => {
-    fetch('http://localhost:4000/profile', {
+    fetch(`${url}/profile`, {
       method: 'GET',
       credentials: 'include',
     })
@@ -52,7 +55,7 @@ const Header = () => {
   }
 
   const handleLogout = async () => {
-    const response = await fetch('http://localhost:4000/logout', {
+    const response = await fetch(`${url}/logout`, {
       method: 'POST',
       credentials: 'include',
     })
@@ -72,7 +75,7 @@ const Header = () => {
 
   const handlePhoto = async () => {
     try {
-      const response = await fetch('http://localhost:4000/photo', {
+      const response = await fetch(`${url}/photo`, {
         method: 'POST',
         body: JSON.stringify({
           base64: file,
@@ -93,7 +96,7 @@ const Header = () => {
   }
 
   const fetchUserPhoto = async () => {
-    const response = await fetch('http://localhost:4000/photo', {
+    const response = await fetch(`${url}/photo`, {
       credentials: 'include',
     })
     const data = await response.json()
