@@ -72,7 +72,7 @@ const Header = () => {
 
   const handlePhoto = async () => {
     try {
-      const response = await fetch('https://lasha-blog.vercel.app/photo', {
+      const response = await fetch('http://localhost:4000/photo', {
         method: 'POST',
         body: JSON.stringify({
           base64: file,

@@ -47,7 +47,7 @@ const CreatePost = () => {
   const handleCreatePost = async (e) => {
     e.preventDefault()
     const base64 = await convertToBase64(file)
-    const response = await fetch('https://lasha-blog.vercel.app/create-post', {
+    const response = await fetch('http://localhost:4000/create-post', {
       method: 'POST',
       body: JSON.stringify({
         base64: base64,
