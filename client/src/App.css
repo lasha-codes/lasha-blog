@@ -85,7 +85,7 @@
   gap: 30px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 830px) {
   html {
     font-size: 70% !important;
   }
@@ -442,8 +442,8 @@ input::-webkit-file-upload-button {
 }
 
 .texts .image-container {
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   object-fit: contain;
   border-radius: 50%;
   overflow: hidden;
@@ -454,6 +454,7 @@ input::-webkit-file-upload-button {
 
 .texts .image-container .by-post {
   width: inherit;
+  object-fit: cover;
 }
 
 .post-description {

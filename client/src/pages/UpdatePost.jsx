@@ -73,7 +73,7 @@ const CreatePost = () => {
       toast.error('Image field is required')
     }
     const base64 = await convertToBase64(file)
-    const response = await fetch(`http://localhost:4000/${id}`, {
+    const response = await fetch(`http://localhost:4000/update-post/${id}`, {
       method: 'PUT',
       body: JSON.stringify({
         base64: base64,

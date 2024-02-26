@@ -93,7 +93,7 @@ const Header = () => {
   }
 
   const fetchUserPhoto = async () => {
-    const response = await fetch('https://lasha-blog.vercel.app/photo', {
+    const response = await fetch('http://localhost:4000/photo', {
       credentials: 'include',
     })
     const data = await response.json()

@@ -28,7 +28,7 @@ const Home = () => {
   }, [])
 
   const fetchPosts = async () => {
-    const response = await fetch('http://localhost:4000/posts')
+    const response = await fetch('https://lasha-blog.vercel.app/posts')
     const data = await response.json()
     if (response.ok) {
       setPosts(data.posts)

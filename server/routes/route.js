@@ -11,7 +11,7 @@ const Post = require('../models/Post.js')
 router.use(
   cors({
     credentials: true,
-    origin: 'http://localhost:5173',
+    origin: 'https://deploy-mern-frontend-rust.vercel.app/',
   })
 )
 router.use(express.json({ limit: '10mb' }))

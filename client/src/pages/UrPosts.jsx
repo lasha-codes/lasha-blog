@@ -12,7 +12,7 @@ const UrPosts = () => {
   const navigate = useNavigate(false)
 
   const fetchPosts = async () => {
-    const response = await fetch('https://lasha-blog.vercel.app/user-posts', {
+    const response = await fetch('http://localhost:4000/user-posts', {
       credentials: 'include',
     })
     const data = await response.json()
