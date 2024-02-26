@@ -3,7 +3,14 @@ const app = express()
 const mongoose = require('mongoose')
 const dotenv = require('dotenv').config()
 const routes = require('./routes/route.js')
+const cors = require('cors')
 
+app.use(
+  cors({
+    credentials: true,
+    origin: 'https://lasha-blog.vercel.app',
+  })
+)
 app.use('/', routes)
 
 mongoose
