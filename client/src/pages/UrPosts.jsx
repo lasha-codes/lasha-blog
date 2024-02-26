@@ -12,9 +12,12 @@ const UrPosts = () => {
   const navigate = useNavigate(false)
 
   const fetchPosts = async () => {
-    const response = await fetch('http://localhost:4000/user-posts', {
-      credentials: 'include',
-    })
+    const response = await fetch(
+      'https://deploy-mern-frontend-rust.vercel.app/user-posts',
+      {
+        credentials: 'include',
+      }
+    )
     const data = await response.json()
     if (response.ok) {
       setPosts(data.userPosts)
@@ -24,13 +27,16 @@ const UrPosts = () => {
   }
 
   const handlePostDelete = async (deleteId) => {
-    const response = await fetch('http://localhost:4000/delete-post', {
-      method: 'DELETE',
-      body: JSON.stringify({
-        deleteId: deleteId,
-      }),
-      headers: { 'Content-Type': 'application/json' },
-    })
+    const response = await fetch(
+      'https://deploy-mern-frontend-rust.vercel.app/delete-post',
+      {
+        method: 'DELETE',
+        body: JSON.stringify({
+          deleteId: deleteId,
+        }),
+        headers: { 'Content-Type': 'application/json' },
+      }
+    )
     if (response.ok) {
       toast.success('U have successfully deleted the post')
       navigate(0)

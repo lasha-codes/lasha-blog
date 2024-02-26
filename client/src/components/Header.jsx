@@ -34,7 +34,7 @@ const Header = () => {
   }, [])
 
   const fetchUserProfile = () => {
-    fetch('http://localhost:4000/profile', {
+    fetch('https://deploy-mern-frontend-rust.vercel.app/profile', {
       method: 'GET',
       credentials: 'include',
     })
@@ -52,10 +52,13 @@ const Header = () => {
   }
 
   const handleLogout = async () => {
-    const response = await fetch('http://localhost:4000/logout', {
-      method: 'POST',
-      credentials: 'include',
-    })
+    const response = await fetch(
+      'https://deploy-mern-frontend-rust.vercel.app/logout',
+      {
+        method: 'POST',
+        credentials: 'include',
+      }
+    )
     if (!response.ok) {
       console.error('server error')
     }
@@ -72,14 +75,17 @@ const Header = () => {
 
   const handlePhoto = async () => {
     try {
-      const response = await fetch('http://localhost:4000/photo', {
-        method: 'POST',
-        body: JSON.stringify({
-          base64: file,
-        }),
-        credentials: 'include',
-        headers: { 'Content-type': 'application/json' },
-      })
+      const response = await fetch(
+        'https://deploy-mern-frontend-rust.vercel.app/photo',
+        {
+          method: 'POST',
+          body: JSON.stringify({
+            base64: file,
+          }),
+          credentials: 'include',
+          headers: { 'Content-type': 'application/json' },
+        }
+      )
       if (!response.ok) {
         toast.error('Internal server error')
         navigate(0)
@@ -93,9 +99,12 @@ const Header = () => {
   }
 
   const fetchUserPhoto = async () => {
-    const response = await fetch('http://localhost:4000/photo', {
-      credentials: 'include',
-    })
+    const response = await fetch(
+      'https://deploy-mern-frontend-rust.vercel.app/photo',
+      {
+        credentials: 'include',
+      }
+    )
     const data = await response.json()
     if (response.ok) {
       setImage(data.photo)
