@@ -12,7 +12,7 @@ const UrPosts = () => {
   const navigate = useNavigate(false)
 
   const fetchPosts = async () => {
-    const response = await fetch('http://localhost:4000/user-posts', {
+    const response = await fetch('https://lasha-blog.vercel.app/user-posts', {
       credentials: 'include',
     })
     const data = await response.json()
@@ -24,7 +24,7 @@ const UrPosts = () => {
   }
 
   const handlePostDelete = async (deleteId) => {
-    const response = await fetch('http://localhost:4000/delete-post', {
+    const response = await fetch('https://lasha-blog.vercel.app/delete-post', {
       method: 'DELETE',
       body: JSON.stringify({
         deleteId: deleteId,
