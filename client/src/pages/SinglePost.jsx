@@ -11,9 +11,7 @@ const SinglePost = () => {
   }, [])
 
   const fetchPosts = async () => {
-    const response = await fetch(
-      'https://deploy-mern-frontend-rust.vercel.app/posts'
-    )
+    const response = await fetch('https://lasha-blog.vercel.app/posts')
     const data = await response.json()
     if (response.ok) {
       setPost(

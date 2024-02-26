@@ -23,7 +23,7 @@ const CreatePost = () => {
 
   const fetchPostInfo = async () => {
     const response = await fetch(
-      `https://deploy-mern-frontend-rust.vercel.app/update-post/${id}`,
+      `https://lasha-blog.vercel.app/update-post/${id}`,
       {
         method: 'POST',
         body: JSON.stringify({
