@@ -34,7 +34,7 @@ const Header = () => {
   }, [])
 
   const fetchUserProfile = () => {
-    fetch('https://lasha-blog.vercel.app/profile', {
+    fetch('http://localhost:4000/profile', {
       method: 'GET',
       credentials: 'include',
     })
@@ -52,7 +52,7 @@ const Header = () => {
   }
 
   const handleLogout = async () => {
-    const response = await fetch('https://lasha-blog.vercel.app/logout', {
+    const response = await fetch('http://localhost:4000/logout', {
       method: 'POST',
       credentials: 'include',
     })
@@ -72,7 +72,7 @@ const Header = () => {
 
   const handlePhoto = async () => {
     try {
-      const response = await fetch('https://lasha-blog.vercel.app/photo', {
+      const response = await fetch('http://localhost:4000/photo', {
         method: 'POST',
         body: JSON.stringify({
           base64: file,
@@ -93,7 +93,7 @@ const Header = () => {
   }
 
   const fetchUserPhoto = async () => {
-    const response = await fetch('https://lasha-blog.vercel.app/photo', {
+    const response = await fetch('http://localhost:4000/photo', {
       credentials: 'include',
     })
     const data = await response.json()

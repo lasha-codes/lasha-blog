@@ -22,16 +22,13 @@ const CreatePost = () => {
   ]
 
   const fetchPostInfo = async () => {
-    const response = await fetch(
-      `https://lasha-blog.vercel.app/update-post/${id}`,
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          updateId: id,
-        }),
-        headers: { 'Content-Type': 'application/json' },
-      }
-    )
+    const response = await fetch(`http://localhost:4000/update-post/${id}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        updateId: id,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    })
     const data = await response.json()
     setTitle(data.title)
     setDescription(data.description)
@@ -76,21 +73,18 @@ const CreatePost = () => {
       toast.error('Image field is required')
     }
     const base64 = await convertToBase64(file)
-    const response = await fetch(
-      `https://lasha-blog.vercel.app/update-post/${id}`,
-      {
-        method: 'PUT',
-        body: JSON.stringify({
-          base64: base64,
-          summary: summary,
-          title: title,
-          types: inpTypes,
-          description: description,
-          updateId: id,
-        }),
-        headers: { 'Content-Type': 'application/json' },
-      }
-    )
+    const response = await fetch(`http://localhost:4000/update-post/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        base64: base64,
+        summary: summary,
+        title: title,
+        types: inpTypes,
+        description: description,
+        updateId: id,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    })
     if (response.ok) {
       toast.success('U have successfully updated a post')
     }
