@@ -11,18 +11,15 @@ const LoginPage = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault()
-    const response = await fetch(
-      'https://deploy-mern-frontend-rust.vercel.app/login',
-      {
-        method: 'POST',
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-      }
-    )
+    const response = await fetch('https://lasha-blog.vercel.app//login', {
+      method: 'POST',
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+    })
     if (!response.ok) {
       console.log('error')
     } else {
