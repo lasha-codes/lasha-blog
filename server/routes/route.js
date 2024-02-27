@@ -11,7 +11,7 @@ const Post = require('../models/Post.js')
 router.use(
   cors({
     credentials: true,
-    origin: 'https://lasha-blog-api.onrender.com',
+    origin: 'https://lasha-blog.onrender.com',
   })
 )
 router.use(express.json({ limit: '10mb' }))
