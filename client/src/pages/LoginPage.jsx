@@ -24,8 +24,9 @@ const LoginPage = () => {
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
     })
+    const { errorMsg } = await response.json()
     if (!response.ok) {
-      console.log('error')
+      toast.error(errorMsg)
     } else {
       toast.success(`Welcome to the Blog Page!`)
       setRedirect(true)
